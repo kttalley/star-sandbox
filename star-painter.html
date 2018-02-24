@@ -20,17 +20,16 @@
                 if(glow <  -70*s){
                     glowRate = -glowRate;
                 }
+                rectMode(CENTER);
                 translate(this.pos.x,this.pos.y);
                 scale(m/150);
                 rotate(this.vel.y*100+m);
                 fill(255,215-glow);
-                quad(-10+glow,0,0,-10,10,0,0-glow,10);
-                fill(255,175);
-                quad(-25,0,0,-25-glow,25,0,0,25+glow);
-                fill(255,105);
-                quad(-50,0,0,-50-glow,50,0,0,50+glow);
-                fill(255,55);
-                quad(-70-glow/2,0,0,-70,70,0,0,70+glow/2);
+                rect(0,0,1+glow,1+glow);
+                fill(255,175+glow);
+                rect(0,0,5+glow,5+glow);
+                fill(255,105-glow);
+                rect(0,0,10-glow,10-glow);               
                 resetMatrix();
             };
 
@@ -87,14 +86,14 @@
         function setup () {
             createCanvas(window.windowWidth, window.windowHeight, P2D);
             angleMode(DEGREES); 
-            // background(0);
+            background(0);
             stroke(255);
             grav = createVector(0,-0.01);
         }
 
 
         function draw () {
-            background(0);
+            // background(0);
             fill(255);
             textSize(12);
             noStroke();
@@ -123,14 +122,14 @@
                 if(attr === false){
                     particles[i].edges();
                 }
-                if(attr === true){
-                    fill(0);
-                    stroke(random(190,255),random(200),random(190,255));
-                    strokeWeight(random(0.01,2));
-                    quad(mouseX,mouseY - 10, mouseX + 20, mouseY + 10, mouseX,mouseY + 10,mouseX - 20, mouseY + 10);
-                    noFill();
-                    ellipse(mouseX,mouseY+5,25,25);
-                }
+                // if(attr === true){
+                //     fill(0);
+                //     stroke(random(190,255),random(200),random(190,255));
+                //     strokeWeight(random(0.01,2));
+                //     quad(mouseX,mouseY - 10, mouseX + 20, mouseY + 10, mouseX,mouseY + 10,mouseX - 20, mouseY + 10);
+                //     noFill();
+                //     ellipse(mouseX,mouseY+5,25,25);
+                // }
                 if(key == 'x'&&keyIsPressed){
                     particles[i].vel.set(0);
                     particles[i].acc.set(0);
